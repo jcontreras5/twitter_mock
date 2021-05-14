@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Explore!</h1>
+
+{% if current_user.is_authenticated %} 
+    <div class="container">
+    {% for user in users %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ user.username }}</h5>
+              <h5 class="card-subtitle">{{ user.email }}</h5>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    {% else %}
+    <h2>Log in to see/make posts!</h2>
+
+{% endif %}
+{% endblock content %}
