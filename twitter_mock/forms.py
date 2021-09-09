@@ -6,6 +6,7 @@ class UserLoginForm(FlaskForm):
 #email,password,Submit from wtforms
     
     email = StringField('Email', validators=[DataRequired(),Email()])
+    username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit_button = SubmitField()
 

@@ -1,6 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy #3
-from datetime import datetime #3
-import uuid #3 unique user identifier-PK
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime 
+import uuid 
 
 #Adding FLASK security from werkzeug :sha256 encryption
 from werkzeug.security import generate_password_hash,check_password_hash  #3
