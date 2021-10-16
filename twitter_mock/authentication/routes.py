@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from twitter_mock.forms import UserLoginForm
-from twitter_mock.models import User, check_password_hash,db #7 include db 
-from flask_login import login_user, logout_user, current_user, login_required
+from twitter_mock.models import User, check_password_hash, db
+from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
 auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
@@ -21,7 +21,7 @@ def register():
             db.session.commit()#3 one commit push to db
 
             #if no errors,then flash,(requires html call) via {msg}
-            flash(f'You have successfully created account {email}','user-created')
+            flash(f'You have successfully created account {email}', 'user-created')
             #redirect 
             return redirect(url_for('site.home'))
     
@@ -37,26 +37,26 @@ def login():
     form = UserLoginForm() # ins of ULF class as form
      # same as above 
     try:
-        print(form.validate_on_submit())
+        # print(form.validate_on_submit())
         if request.method =='POST' and form.validate_on_submit():
+            username = form.username.data
             email = form.email.data
             password = form.password.data
-            print('gots data')
             #create var for logged_user
             logged_user = User.query.filter(User.email == email).first() #query table filter == WHERE user.email - email above
-            print(logged_user)
-            if logged_user and check_password_hash(logged_user.password, password):# if vars exist and not none: 1st arg table pass comparison from table pw to input pw
-                print("no")
+            print('logged_user:', logged_user)
+            # logged_username = User.query.filter(User.username == username).first()
+            if logged_user and username == logged_user.username and check_password_hash(logged_user.password, password):# if vars exist and not none: 1st arg table pass comparison from table pw to input pw
                 login_user(logged_user) #3 logs user in 
-                flash('You were successfully logged in: Via Email/Password', 'auth-success')
+                flash('You were successfully logged in.', 'auth-success')
                 return redirect(url_for('site.home'))
             else:
-                print("yes")
-                flash('Your Email/Password is incorrect', 'auth-failed')
-                return redirect(url_for('auth.signin'))
+                flash('Your email or password is incorrect.', 'auth-failed')
+                return redirect(url_for('auth.login'))
     except:
-        raise Exception('Invalid form Data: Please check your form')
-    print("too")
+        raise Exception('Invalid form data. Please check your form.')
+    
+    # print("too")
     return render_template('login.html', form = form) 
 
 @auth.route('/logout')

@@ -24,12 +24,12 @@ class User(db.Model,UserMixin): #3 create class user and inherit  SQLA Models cl
     email = db.Column(db.String(150), nullable = False)                 #3
     password = db.Column(db.String, nullable = False,default="")        #3
     token = db.Column(db.String,default="", unique = True)              #3 unique=SERIAL
-    tweet = db.relationship('Tweet', backref='author', lazy = True) #4 if you do .user_token.author will join User and locker table and show the instance of matching id
+    tweet = db.relationship('Tweet', backref='author', lazy = True) #4 if you do .user_token.author will join User and Tweet table and show the instance of matching id
 
 #init class 
     def __init__(self,username,email,password,token=""):
         self.id = self.set_id() #use set_id method to get id
-        self.username = " "
+        self.username = username
         self.email = email 
         self.password = self.set_password(password) # set_password method takes in password from above class input
         self.token = self.set_token(24)  #method with length 24
