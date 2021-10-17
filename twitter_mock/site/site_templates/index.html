@@ -31,19 +31,22 @@
 </header>
 
 {% if current_user.is_authenticated %} 
-    <div class="container">
+    <div class="container" id="tweet-container">
     {% for tweet in tweets %}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">{{ tweet.author.username }}</h6>
-              <h5 class="card-title">{{ tweet.content }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{ tweet.date_created }}</h6>
+        <div id="tweet-outer-div">
+            <div class="card" style="width: 18rem;" id="tweet-card">
+                <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">{{ tweet.author.username }}</h6>
+                <h5 class="card-title">{{ tweet.content }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ tweet.date_created.ctime() }}</h6>
+                </div>
             </div>
         </div>
     {% endfor %}
     </div>
-    {% else %}
-    <h2>Log in to join the discourse!</h2>
-
+{% else %}
+    <div id="no-user-greeting">
+        <h2>Log in to join the discourse!</h2>
+    </div>
 {% endif %}
 {% endblock %}

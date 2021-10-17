@@ -78,3 +78,36 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+
+  /* Home */
+
+  #home-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  #home-col {
+    margin: 0 auto;
+  }
+
+  .banner {
+    text-align: center;
+  }
+
+  #no-user-greeting {
+    text-align: center;
+  }
+
+  /* Tweets on Home */
+
+  #tweet-container {
+    margin-top: 5vh;
+  }
+
+  #tweet-outer-div {
+    margin-top: 5vh;
+  }
+
+  #tweet-card {
+    margin: 0 auto;
+  }
