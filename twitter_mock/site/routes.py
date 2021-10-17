@@ -29,13 +29,13 @@ def explore():
 @site.route('/createtweet', methods=['GET', 'POST'])
 @login_required
 def createtweet():
-    form = TForm() #9 parentheses 
+    form = TForm() 
     if request.method == 'POST' and form.validate():
         tweet = form.tweet.data
-        user_id = current_user.id #10 change to username
+        user_id = current_user.id 
         print(tweet)
         tweet = Tweet(tweet, user_id)
-        db.session.add(tweet) #1 post typo
+        db.session.add(tweet)
         db.session.commit()
         return redirect(url_for('site.home'))
     return render_template("createtweet.html", form = form)
