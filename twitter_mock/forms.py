@@ -13,5 +13,5 @@ class UserLoginForm(FlaskForm,UserMixin):
 
 #Twitter Mock Form
 class TForm(FlaskForm):
-    tweet = StringField('Tweet', validators=[DataRequired()]) #content
+    tweet = StringField(validators=[DataRequired()]) #content
     submit_button = SubmitField() #submit

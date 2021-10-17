@@ -30,9 +30,9 @@
               <a class="nav-item nav-link" href="{{ url_for('site.createtweet')}}">New Post</a>
               <a class="nav-item nav-link" href="{{ url_for('site.explore')}}">Explore</a>
               <a class="nav-item nav-link" href="{{ url_for('site.explore')}}">Account</a>
-              <a class="nav-item nav-link" href="{{ url_for('auth.logout')}}">Logout</a>
+              <a class="nav-item nav-link" href="{{ url_for('auth.logout')}}">Log out</a>
               {% else %}
-                <a class="nav-item nav-link" href="{{ url_for('auth.login')}}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('auth.login')}}">Log in</a>
                 <a class="nav-item nav-link" href="{{ url_for('auth.register')}}">Register</a>
               {% endif %}
             </div>
