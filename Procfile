@@ -1,1 +1,1 @@
-web: gunicorn attendance:app --preload --timeout 60
+web: gunicorn twitter_mock:app --preload --timeout 60
