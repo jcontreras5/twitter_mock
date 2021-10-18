@@ -10,9 +10,9 @@ This Python project is on a Flask framework with database support via Psycopg2, 
 
 ## Authors
 
-Jonathan Contreras https://github.com/jcontreras5
-Omar Qoran https://github.com/ogq10
-Michael Robinson https://github.com/merobi-hub
+Jonathan Contreras https://github.com/jcontreras5 \
+Omar Qoran https://github.com/ogq10 \
+Michael Robinson https://github.com/merobi-hub \
 
 ## License
 
