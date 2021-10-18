@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 ​
-    <link rel="stylesheet" type="text/css" href="..//static/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
     <title>Tweeter</title>
 </head>
 <body>
@@ -30,9 +30,9 @@
               <a class="nav-item nav-link" href="{{ url_for('site.createtweet')}}">New Post</a>
               <a class="nav-item nav-link" href="{{ url_for('site.explore')}}">Explore</a>
               <a class="nav-item nav-link" href="{{ url_for('site.explore')}}">Account</a>
-              <a class="nav-item nav-link" href="{{ url_for('auth.logout')}}">Logout</a>
+              <a class="nav-item nav-link" href="{{ url_for('auth.logout')}}">Log out</a>
               {% else %}
-                <a class="nav-item nav-link" href="{{ url_for('auth.login')}}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('auth.login')}}">Log in</a>
                 <a class="nav-item nav-link" href="{{ url_for('auth.register')}}">Register</a>
               {% endif %}
             </div>
@@ -40,18 +40,9 @@
         </div>
       </nav>
     </header>
-    <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-              <div class="alert alert-{{ category }}">
-                {{ message }}
-              </div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
+    <main role="main" class="container" id="home-container">
+      <div class="row" id="home-row">
+        <div class="col-md-8" id="home-col">
           {% block content %}{% endblock %}
         </div>
 ​
